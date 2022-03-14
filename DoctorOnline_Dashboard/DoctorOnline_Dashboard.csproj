@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>1b960f35-88c6-416b-947c-c677a56bca8a</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20220225213314_AddDoctorIdToOrderModel.cs" />
+    <Compile Remove="Migrations\20220225213314_AddDoctorIdToOrderModel.Designer.cs" />
+    <Compile Remove="Migrations\20220304174909_MakeTheOrderStatusNullable.cs" />
+    <Compile Remove="Migrations\20220304174909_MakeTheOrderStatusNullable.Designer.cs" />
+    <Compile Remove="Migrations\20220304220300_dropForeignKeyconstraintOnDoctorIdinOrderModel.cs" />
+    <Compile Remove="Migrations\20220304220300_dropForeignKeyconstraintOnDoctorIdinOrderModel.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.22" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.22">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>
