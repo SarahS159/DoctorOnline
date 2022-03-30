@@ -9,10 +9,11 @@ namespace DoctorOnline_Dashboard.Areas.DoctorsManagement
 {
    public interface IDoctorsManagement
     {
+        public IResponse DoctorLogIn(DoctorDto doctorDto);
         public IQueryable<Doctor> GetFreeDoctorsBySpeciality(int specialityId);
         public IQueryable<int> GeDoctorsByShedule();
-      //  public Doctor GetDoctorToHandleOrder(int specialityId);
-
-        public DoctorDto GetDoctorToHandleRequest(int specialityId, string city); 
+        public IQueryable<Doctor> GetAvailbleDoctors();
+        public DoctorDto GetDoctorToHandleRequest(int specialityId, string city);
+        public IResponse ChangeDoctorStatus(int doctorId, string doctorStatus);
     }
 }

@@ -25,7 +25,7 @@ namespace DoctorOnline_Dashboard.Controllers
 
         public IActionResult Privacy()
         {
-            return View();
+            return View("AvailbleDoctors");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

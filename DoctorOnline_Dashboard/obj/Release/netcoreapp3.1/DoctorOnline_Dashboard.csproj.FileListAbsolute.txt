@@ -76,3 +76,5 @@ C:\Users\ASUS\source\repos\DoctorOnline_Dashboard\DoctorOnline_Dashboard\obj\Rel
 C:\Users\ASUS\source\repos\DoctorOnline_Dashboard\DoctorOnline_Dashboard\obj\Release\netcoreapp3.1\DoctorOnline_Dashboard.dll
 C:\Users\ASUS\source\repos\DoctorOnline_Dashboard\DoctorOnline_Dashboard\obj\Release\netcoreapp3.1\DoctorOnline_Dashboard.pdb
 C:\Users\ASUS\source\repos\DoctorOnline_Dashboard\DoctorOnline_Dashboard\obj\Release\netcoreapp3.1\DoctorOnline_Dashboard.genruntimeconfig.cache
+C:\Users\ASUS\source\repos\DoctorOnline_Dashboard\DoctorOnline_Dashboard\obj\Release\netcoreapp3.1\Razor\Views\Doctors\AvailbleDoctors.cshtml.g.cs
+C:\Users\ASUS\source\repos\DoctorOnline_Dashboard\DoctorOnline_Dashboard\obj\Release\netcoreapp3.1\Razor\Views\Orders\OrderManagementView.cshtml.g.cs

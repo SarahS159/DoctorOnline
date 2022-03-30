@@ -8,7 +8,7 @@ namespace DoctorOnline_Dashboard.Areas.OrderManagement
 {
     public interface IOrderManagement
     {
-        public IResponse AddNewOrder(OrderDto orderDto);
+        public IResponse AddNewOrder(OrderDto orderDto, double distanceInKm);
         public int CalculateOrderCost(double distanceInKm, double specialityCost);
         public IResponse DoctorOrderConfirmation(OrderDto orderDto);
         public IResponse PatientOrderConfirmation(OrderDto orderDto);//orderStatus = 0 or 1 (0:ok, 1:cancel)

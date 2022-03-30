@@ -108,6 +108,7 @@ namespace DoctorOnline_Dashboard.Areas.UserManagement
         //TODO: in this api we should return the patient id to front end .
         public IResponse PatientLogIn(PatientDto patientDto)
         {
+            List<PatientDto> patientAsList = new List<PatientDto>();
             try
             {
                 var patientInDatabase = _doctorOnlineContext.Patients.SingleOrDefault(p => (p.patientGsm == patientDto.patientGsm)
@@ -119,15 +120,26 @@ namespace DoctorOnline_Dashboard.Areas.UserManagement
                 }
                 else
                 {
+                    //if the patient not active
                     if (patientInDatabase.isActive == 0)
                     {
+                        var responsePatient = new PatientDto();
+                        responsePatient.patientId = patientInDatabase.patientId;
+                        responsePatient.userType = 'P';
+                        patientAsList.Add(responsePatient);
                         _response.errorCode = (int)Errors.Patient_Exsit_But_Not_Active;
                         _response.errorDescription = (Errors.Patient_Exsit_But_Not_Active).ToString();
+                        _response.data = patientAsList;
                     }
                     else
                     {
+                        var responsePatient = new PatientDto();
+                        responsePatient.patientId = patientInDatabase.patientId;
+                        responsePatient.userType = 'P';
+                        patientAsList.Add(responsePatient);
                         _response.errorCode = (int)Errors.Success;
                         _response.errorDescription = (Errors.Success).ToString();
+                        _response.data = patientAsList;
                     }
                 }
             }

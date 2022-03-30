@@ -7,6 +7,10 @@ namespace DoctorOnline_Dashboard.ModelDto
 {
     public class DoctorDto
     {
+        public DoctorDto()
+        {
+        }
+
         public DoctorDto(int id, string name, string gsm, string city, string address)
         {
             doctorId = id;
@@ -22,6 +26,8 @@ namespace DoctorOnline_Dashboard.ModelDto
         //public int specialityId { get; set; }
         public string doctorCity { get; set; }
         public string doctorAddress { get; set; }
+        public string doctorPassword { get; set; }
+        public char userType { get; set; }  
         //public string doctorStatus { get; set; }
     }
 }

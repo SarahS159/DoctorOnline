@@ -14,6 +14,7 @@ namespace DoctorOnline_Dashboard.Utils
         Wrong_GSM_or_Password = 5,//login
         Patient_Not_Exsit = 6 ,//forget password
         No_Availble_Doctors_To_Handle_The_Order = 7,
+        Doctor_Not_Exsit = 8,
         GeneralError = 2
     }
 }

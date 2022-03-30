@@ -75,4 +75,5 @@ C:\Users\ASUS\source\repos\DoctorOnline_Dashboard\DoctorOnline_Dashboard\bin\Deb
 C:\Users\ASUS\source\repos\DoctorOnline_Dashboard\DoctorOnline_Dashboard\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\ASUS\source\repos\DoctorOnline_Dashboard\DoctorOnline_Dashboard\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\ASUS\source\repos\DoctorOnline_Dashboard\DoctorOnline_Dashboard\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\ASUS\source\repos\DoctorOnline_Dashboard\DoctorOnline_Dashboard\obj\Debug\netcoreapp3.1\DoctorOnline_Dashboard.csproj.AssemblyReference.cache
+C:\Users\ASUS\source\repos\DoctorOnline_Dashboard\DoctorOnline_Dashboard\obj\Debug\netcoreapp3.1\Razor\Views\Doctors\AvailbleDoctors.cshtml.g.cs
+C:\Users\ASUS\source\repos\DoctorOnline_Dashboard\DoctorOnline_Dashboard\obj\Debug\netcoreapp3.1\Razor\Views\Orders\OrderManagementView.cshtml.g.cs

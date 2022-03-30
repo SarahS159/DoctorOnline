@@ -22,9 +22,9 @@ namespace DoctorOnline_Dashboard.Controllers.APIs
 
         [HttpPost]
         [Route("addOrder")]
-        public IResponse AddNewOrder(OrderDto orderDto)
+        public IResponse AddNewOrder(OrderDto orderDto, [FromHeader(Name = "distance")] double distanceInKm)
         {
-            return _orderManagement.AddNewOrder(orderDto);
+            return _orderManagement.AddNewOrder(orderDto, distanceInKm);
         }
 
         [HttpPost]

@@ -3,6 +3,7 @@ using DoctorOnline_Dashboard.Areas.DoctorsManagement;
 using DoctorOnline_Dashboard.ModelDto;
 using DoctorOnline_Dashboard.Models;
 using DoctorOnline_Dashboard.Utils;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace DoctorOnline_Dashboard.Areas.OrderManagement
             _mapper = mapper;
         }
         //TODO:Handle Exceptiones.
-        public IResponse AddNewOrder(OrderDto orderDto)//TODO: ask kais to send "distanceInKm" in request headers.
+        public IResponse AddNewOrder(OrderDto orderDto, double distanceInKm)//TODO: ask kais to send "distanceInKm" in request headers.
         {
             List<OrderDto> orderDtoAsList = new List<OrderDto>();
             var doctor = _doctorsManagement.GetDoctorToHandleRequest(orderDto.specialityId, orderDto.patientCity);
@@ -55,7 +56,7 @@ namespace DoctorOnline_Dashboard.Areas.OrderManagement
             else
             {
                 var speciality = _doctorOnlineContext.Specialities.SingleOrDefault(s => s.specialityId == orderDto.specialityId);
-                int orderCost = CalculateOrderCost(500.0, speciality.specialityCost);
+                int orderCost = CalculateOrderCost(distanceInKm, speciality.specialityCost);
                 order.orderCost = orderCost;
                 order.doctorId = doctor.doctorId;
                 order.doctorName = doctor.doctorName;

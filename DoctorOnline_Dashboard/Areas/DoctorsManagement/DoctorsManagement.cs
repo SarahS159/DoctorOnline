@@ -1,5 +1,6 @@
 ﻿using DoctorOnline_Dashboard.ModelDto;
 using DoctorOnline_Dashboard.Models;
+using DoctorOnline_Dashboard.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,12 +12,46 @@ namespace DoctorOnline_Dashboard.Areas.DoctorsManagement
     public class DoctorsManagement : IDoctorsManagement
     {
         private readonly DoctorOnlineContext _doctorOnlineContext;
-        //  private readonly IResponse _response;
+        private readonly IResponse _response;
         static public Random rnd = new Random();
         public DoctorsManagement(DoctorOnlineContext doctorOnlineContext, IResponse response)
         {
             _doctorOnlineContext = doctorOnlineContext;
-          //  _response = response;
+            _response = response;
+        }
+
+        public IResponse DoctorLogIn(DoctorDto doctorDto)
+        {
+            try
+            {
+                var doctorInDataBase = _doctorOnlineContext.Doctors.SingleOrDefault(d => (d.doctorGsm == doctorDto.doctorGsm)
+                                                                                      && (d.doctorPassword == doctorDto.doctorPassword));
+                if (doctorInDataBase == null)
+                {
+                    _response.errorCode = (int)Errors.Wrong_GSM_or_Password;
+                    _response.errorDescription = (Errors.Wrong_GSM_or_Password).ToString();
+                }
+                else
+                {
+                    List<DoctorDto> doctorAsList = new List<DoctorDto>();
+                    DoctorDto doctor = new DoctorDto();
+                    doctor.doctorId = doctorInDataBase.doctorId;
+                    doctor.userType = 'D';
+                    doctorAsList.Add(doctor);
+                    _response.errorCode = (int)Errors.Success;
+                    _response.errorDescription = (Errors.Success).ToString();
+                    _response.data = doctorAsList;
+                }
+            }
+            catch(Exception ex) {
+                Console.WriteLine(ex.InnerException.Message);
+                _response.errorCode = (int)Errors.GeneralError;
+                _response.errorDescription = (Errors.GeneralError).ToString();
+                var data = new List<String>();
+                data.Add(ex.StackTrace);//recheck
+                _response.data = data;
+            }
+            return _response;
         }
 
         //TODO:handle Exceptions in this class
@@ -116,6 +151,33 @@ namespace DoctorOnline_Dashboard.Areas.DoctorsManagement
             }
 
             return doctorToHanleOrder;
+        }
+
+        public IQueryable<Doctor> GetAvailbleDoctors()
+        {
+           return  _doctorOnlineContext.Doctors.Where(d => d.doctorStatus == null);
+        }
+
+        public IResponse ChangeDoctorStatus(int doctorId, string doctorStatus)
+        {
+            var doctorInDatabase = _doctorOnlineContext.Doctors.SingleOrDefault(d => d.doctorId == doctorId);
+
+            if(doctorInDatabase != null)
+            {
+                doctorInDatabase.doctorStatus = doctorStatus;
+                _doctorOnlineContext.SaveChanges();
+
+                _response.errorCode = (int)Errors.Success;
+                _response.errorDescription = (Errors.Success).ToString();
+
+            }
+            else
+            {
+                _response.errorCode = (int)Errors.Doctor_Not_Exsit;
+                _response.errorDescription = (Errors.Doctor_Not_Exsit).ToString();
+            }
+
+            return _response;
         }
 
         //public Doctor GetDoctorToHandleOrder(int specialityId)
